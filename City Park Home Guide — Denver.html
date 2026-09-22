@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>City Park Home Guide — Denver</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F3EFE4; --ink:#211A12; --brick:#9C4326; --brick-tint:#F1E0D6;
+  --gold:#B9812A; --gold-tint:#F3E6C9; --blue:#1F3350; --blue-tint:#DCE3EA;
+  --sage:#5F7357; --sage-tint:#E2E8DA; --plum:#6B3F4B; --plum-tint:#EADFE1; --line:rgba(33,26,18,.14);
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:64px}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --cream:#211A12; --ink:#F3EFE4; --line:rgba(243,239,228,.16);} }
+:root[data-theme="dark"]{ --cream:#211A12; --ink:#F3EFE4; --line:rgba(243,239,228,.16);}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:'Work Sans',sans-serif;font-size:16px;line-height:1.55}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;margin:0}
+a{color:inherit}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--cream);border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap}
+nav .wrap{display:flex;gap:6px;padding:12px 24px}
+nav a{font-size:13px;padding:7px 13px;border-radius:99px;border:1px solid var(--line);text-decoration:none;flex:none}
+header.hero{padding:64px 0 40px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:13px;color:var(--brick);letter-spacing:.02em}
+h1{font-size:clamp(34px,6vw,52px);line-height:1.05;margin:10px 0 14px;max-width:12ch}
+.hero p{max-width:52ch;font-size:17px;opacity:.85}
+.stat-row{display:flex;gap:28px;margin-top:28px;flex-wrap:wrap}
+.stat b{font-family:'Fraunces',serif;font-size:26px;display:block}
+.stat span{font-size:13px;opacity:.7}
+section{padding:52px 0;border-bottom:1px solid var(--line)}
+section h2{font-size:28px;margin-bottom:6px}
+h3.grp{font-size:15px;text-transform:none;opacity:.75;margin:22px 0 12px;border-top:1px dashed var(--line);padding-top:18px}
+h3.grp:first-of-type{border-top:none;padding-top:0;margin-top:8px}
+.sub{opacity:.75;max-width:56ch;margin-bottom:20px}
+.band-brick{background:var(--brick-tint)}
+.band-gold{background:var(--gold-tint)}
+.band-blue{background:var(--blue-tint)}
+.band-sage{background:var(--sage-tint)}
+.band-plum{background:var(--plum-tint)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.card{border:1px solid var(--line);padding:14px 16px;background:rgba(255,255,255,.35)}
+:root[data-theme="dark"] .card,:root:not([data-theme="light"]) .card{background:rgba(0,0,0,.14)}
+.card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.card h3{font-size:16px;line-height:1.3}
+.card h3 a{text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+.card p{margin:6px 0 0;font-size:14px;opacity:.85}
+.tag{font-size:11px;opacity:.7;margin-top:8px;display:block}
+.pin{border:1px solid var(--line);background:none;border-radius:99px;width:26px;height:26px;flex:none;cursor:pointer;font-size:13px;color:inherit;line-height:1}
+.pin:hover{background:rgba(0,0,0,.08)}
+.map-wrap{display:flex;gap:28px;flex-wrap:wrap;align-items:flex-start}
+#map-svg{flex:0 0 320px;max-width:100%}
+.legend{flex:1;min-width:240px}
+#selected{font-size:14px;border:1px solid var(--line);padding:12px 14px;margin-bottom:14px;min-height:20px}
+#selected a{text-decoration:underline}
+#selected .ph{opacity:.6}
+.hike{border:1px solid var(--line);padding:14px 16px;margin-bottom:10px;display:flex;justify-content:space-between;gap:14px;align-items:baseline;background:rgba(255,255,255,.3)}
+:root[data-theme="dark"] .hike,:root:not([data-theme="light"]) .hike{background:rgba(0,0,0,.14)}
+.hike h3{font-size:16px}
+.hike .meta{font-size:13px;opacity:.7;white-space:nowrap}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:22px}
+.info-grid h3{font-size:15px;margin-bottom:6px}
+.info-grid p{font-size:14px;opacity:.85;margin:0}
+footer{padding:40px 24px;text-align:center;font-size:13px;opacity:.6}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a href="#map">Map</a><a href="#dine">Dining</a><a href="#brew">Breweries</a><a href="#see">See &amp; Do</a>
+  <a href="#kids">With Kids</a><a href="#mountains">Hikes &amp; Mountains</a><a href="#know">Good to Know</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div class="eyebrow">3718 N Milwaukee St, Denver — City Park / Cole</div>
+  <h1>Welcome to the Mile High City</h1>
+  <p>You're a few blocks from City Park, home to the Denver Zoo and the Museum of Nature &amp; Science, and an easy walk or short ride from the RiNo Art District and Five Points. Tap the pin on any listing to see it on the map and get directions.</p>
+  <div class="stat-row">
+    <div class="stat"><b>5,280 ft</b><span>elevation — pace yourself day one</span></div>
+    <div class="stat"><b>0.6 mi</b><span>to the Denver Zoo</span></div>
+    <div class="stat"><b>300+</b><span>days of sun a year</span></div>
+  </div>
+</div></header>
+
+<section id="map"><div class="wrap">
+  <h2>The lay of the land</h2>
+  <p class="sub">A stylized map, not to scale — distance and direction from the house as the crow flies. Tap a pin (📍) on any listing to see it here and get real turn-by-turn directions.</p>
+  <div id="selected"><span class="ph">Tap any 📍 pin on the page to highlight it here.</span></div>
+  <div class="map-wrap">
+    <svg id="map-svg" viewBox="0 0 320 320" width="320" height="320"></svg>
+    <ul class="legend" id="legend" style="font-size:13px;list-style:none;padding:0;margin:0;columns:2;column-gap:16px"></ul>
+  </div>
+</div></section>
+
+<section id="dine" class="band-brick"><div class="wrap">
+  <h2>Dining</h2>
+  <p class="sub">Neighborhood spots around City Park and Five Points/RiNo, from grab-and-go to date night.</p>
+  <h3 class="grp">Casual &amp; easy on the wallet</h3>
+  <div class="cards" id="dine-casual"></div>
+  <h3 class="grp">Special occasion &amp; fine dining</h3>
+  <div class="cards" id="dine-fine"></div>
+</div></section>
+
+<section id="brew" class="band-plum"><div class="wrap">
+  <h2>Breweries</h2>
+  <p class="sub">Denver's brewery scene is dense here — most of these are a 10–20 minute walk in Five Points/RiNo.</p>
+  <div class="cards" id="brew-list"></div>
+</div></section>
+
+<section id="see" class="band-gold"><div class="wrap">
+  <h2>See &amp; do</h2>
+  <p class="sub">Museums, live music, sports, and a few only-in-Denver ways to spend an afternoon.</p>
+  <div class="cards" id="see-list"></div>
+</div></section>
+
+<section id="kids" class="band-blue"><div class="wrap">
+  <h2>With kids</h2>
+  <p class="sub">City Park itself has a lake, playgrounds, and paddle boats — a great free start to any day.</p>
+  <div class="cards" id="kids-list"></div>
+</div></section>
+
+<section id="mountains" class="band-sage"><div class="wrap">
+  <h2>Hikes &amp; mountain escapes</h2>
+  <p class="sub">The Front Range starts about 30–50 minutes west. Drive times are approximate; direction is from the house.</p>
+  <div class="hike"><h3>Lookout Mountain Park <span class="tag">Golden</span></h3><div class="meta">15.4 mi · W · ~35 min drive</div></div>
+  <div class="hike"><h3>Lair o' the Bear Park <span class="tag">Idledale</span></h3><div class="meta">17.7 mi · WSW · ~40 min drive</div></div>
+  <div class="hike"><h3>Deer Creek Canyon Park <span class="tag">Littleton</span></h3><div class="meta">18.8 mi · SW · ~40 min drive</div></div>
+  <div class="hike"><h3>Waterton Canyon <span class="tag">easy, flat, bighorn sheep</span></h3><div class="meta">20.6 mi · SSW · ~45 min drive</div></div>
+  <div class="hike"><h3>Eldorado Canyon State Park <span class="tag">rock climbing</span></h3><div class="meta">21.3 mi · NW · ~50 min drive</div></div>
+  <div class="hike"><h3>Cave of the Winds <span class="tag">Manitou Springs — day trip</span></h3><div class="meta">61.9 mi · S · ~1 hr 20 drive</div></div>
+</div></section>
+
+<section id="know"><div class="wrap">
+  <h2>Good to know</h2>
+  <div class="info-grid">
+    <div><h3>Altitude</h3><p>Denver sits at 5,280 ft. Drink more water than usual and go easy on alcohol the first day.</p></div>
+    <div><h3>Getting around</h3><p>RTD bus routes run along Colorado Blvd and 17th Ave; downtown and Union Station are a quick rideshare or bike ride away. <a href="https://rideveo.com" target="_blank" rel="noopener">Veo e-bikes</a> are usually parked around the park.</p></div>
+    <div><h3>Weather</h3><p>Sunny and dry most days, but afternoon thunderstorms and sudden temperature swings are common — layer up.</p></div>
+    <div><h3>Parking</h3><p>Street parking is free and generally easy in this neighborhood, though City Park events can fill nearby blocks.</p></div>
+  </div>
+</div></section>
+
+<footer>Enjoy Denver — and welcome home.</footer>
+
+<script>
+const HOME_ADDR = "3718 N Milwaukee St, Denver, CO 80205";
+// [id, name, address, distMi, bearingDeg, desc, tag, site]
+const DINE_CASUAL = [
+["citytavern","City Park Tavern","3181 E 23rd Ave, Denver, CO 80205",1.10,172,"Golf-course clubhouse pub with the best skyline view of any restaurant on this list.","American pub · $$",null,"ChIJq29HUa15bIcRLETzEiISOrg"],
+["cafemiriam","Cafe Miriam","2217 E 21st Ave, Denver, CO 80205",1.44,197,"French-Moroccan breakfast spot on the park — go for the crepes and Miriam's Mocha.","Breakfast &amp; cafe · $$",null,"ChIJSZTzu0l5bIcRSVuKBFu-SUQ"],
+["kikes","Kiké's Red Tacos","1200 W 38th Ave, Denver, CO 80211",2.59,271,"Slow-cooked birria quesatacos with a full salsa bar — the neighborhood's go-to counter-service spot.","Mexican · $","https://kikesredtacos.com","ChIJQc7pX6l5bIcRDZ9yE-a0V5w"],
+["jays","Famous Original J's Pizza","715 E 26th Ave, Denver, CO 80205",1.65,236,"NYC-style slice window with grandma pies; grab a slice and eat on the patio next door.","Pizza · $","https://famousoriginaljs.com","ChIJZboohiN5bIcRL8KsdMZTwMU"],
+["riversroads","Rivers and Roads Coffee","2539 Bruce Randolph Ave, Denver, CO 80205",0.34,224,"Beloved gluten-free bakery and roastery right in the neighborhood — try the breakfast fries.","Coffee &amp; bakery · $","https://riversandroadscoffee.com","ChIJjZR2K2p5bIcRqjONTQcYJ_g"],
+["atomiccowboy","Atomic Cowboy / Denver Biscuit Co.","3237 E Colfax Ave, Denver, CO 80206",1.93,175,"Biscuit sandwiches by day, pizza and beer by night, in one lively room.","Biscuits &amp; pizza · $$",null,"ChIJB8H2oa1-bIcR0v0lKsQugFw"],
+["olivefinch","Olive & Finch","1552 E 17th Ave, Denver, CO 80218",1.96,207,"Bright, casual all-day cafe good for a quick, quality breakfast or lunch.","Cafe · $$",null,"ChIJFaLNgjN5bIcRpXjTroYfHzQ"],
+["nowherecoffee","Nowhere Coffee","1717 E 39th Ave, Denver, CO 80205",0.82,286,"A 1973 Airstream trailer serving excellent coffee along the 39th Ave greenway.","Coffee · $",null,"ChIJ0yMq0Y95bIcRn4mH0xca6JE"]
+];
+const DINE_FINE = [
+["plimoth","The Plimoth","2335 E 28th Ave, Denver, CO 80205",0.86,205,"Seasonal New England-inspired tasting menu from Chef Pete Ryan — a City Park institution for date night.","New American · $$$$",null,"ChIJh_9W1UB5bIcRiKwEnNlla2o"],
+["majortom","Major Tom","2845 Larimer St, Denver, CO 80205",1.68,253,"Chef-counter fine dining with a rotating seasonal menu — book ahead.","New American · $$$$",null,"ChIJc8VTUUp5bIcRKsLpvO9z4Ak"],
+["hopalley","Hop Alley","3500 Larimer St, Denver, CO 80205",1.18,266,"Michelin-recognized Chinese-inspired shared plates in RiNo — arrive hungry.","Asian fusion · $$$",null,"ChIJiz68dxp5bIcRnDG_uUVRVJw"],
+["brixton","Brasserie Brixton","3701 N Williams St, Denver, CO 80205",0.76,270,"French bistro classics — pâté, French onion soup, mussels and fries — in a cozy open kitchen.","French · $$$",null,"ChIJR49ghit5bIcRM4UGxMi_VgU"],
+["pointeasy","Point Easy","2000 E 28th Ave, Denver, CO 80205",0.99,217,"Mid-century-styled monthly-changing menu with an excellent wine list — a locals' favorite splurge.","New American · $$$",null,"ChIJEft_6Et5bIcRMMUlKDVa4tQ"]
+];
+const BREW = [
+["cohesion","Cohesion Brewing","3851 Steele St, Denver, CO 80205",0.33,290,"Authentic Czech tank lagers in an industrial taproom — closest brewery to the house.","Brewery",null,"ChIJMXdBCW95bIcRw2NKb5Hm88U"],
+["ephemeral","Ephemeral Rotating Taproom","2301 E 28th Ave, Denver, CO 80205",0.87,207,"Neighborhood taproom with an ever-changing tap list from Colorado and beyond.","Taproom",null,"ChIJBcvCs-F7bIcRMz3xlKva6JI"],
+["blackshirt","Black Shirt Brewing","3719 Walnut St, Denver, CO 80205",1.12,275,"Craft pizza and beer with a laid-back, art-covered taproom.","Brewery &amp; pizza",null,"ChIJYWO6GxB5bIcR0C3amGQv8ZI"],
+["spangalang","Spangalang Brewery","2736 Welton St, Denver, CO 80205",1.61,236,"Black-owned Five Points brewery with live jazz and a great Sunday brunch vibe.","Brewery",null,"ChIJLx-igyN5bIcRmLSst1q41To"],
+["theblock","The Block Distilling Co.","2990 Larimer St, Denver, CO 80205",1.58,254,"RiNo distillery with inventive cocktails and bottled spirits to take home.","Distillery",null,"ChIJCctm1x55bIcRHHjqj8N_huU"],
+["greatdivide","Great Divide Brewery & Roadhouse","3040 Blake St, Denver, CO 80205",1.58,260,"RiNo taproom from Denver's original craft brewery — full food menu too.","Brewery",null,"ChIJNT8v5mJ5bIcRjGkdIneIwwc"],
+["ratio","Ratio Beerworks","2920 Larimer St, Denver, CO 80205",1.61,253,"Dog-friendly RiNo brewery with a big patio and free Wednesday comedy.","Brewery",null,"ChIJgZ4HIR95bIcRVav2shAUzp8"],
+["odell","Odell Brewing Five Points Brewhouse","2945 Larimer St, Denver, CO 80205",1.60,255,"Fort Collins favorite's Denver taproom, with fire pits on the patio.","Brewery","https://www.odellbrewing.com","ChIJW7kEcvB5bIcRl5ji_aVrEIk"]
+];
+const SEE = [
+["citypark","City Park","City Park, Denver, CO 80205",1.34,176,"Denver's largest park — lake, tree-lined paths, and skyline views, right up the street.","Park",null,null],
+["dmns","Denver Museum of Nature & Science","2001 Colorado Blvd, Denver, CO 80205",1.52,161,"Dinosaurs, a planetarium, and a gem hall rooted in Colorado geology.","Museum","https://www.dmns.org","ChIJI3SnU1F5bIcREWJ08vMIP80"],
+["botanic","Denver Botanic Gardens","1007 York St, Denver, CO 80206",2.55,191,"Beautifully kept gardens spanning desert to alpine plantings.","Gardens","https://www.botanicgardens.org","ChIJ0T6BO7h-bIcRGm7RHsvfG0A"],
+["rino","RiNo Art District","RiNo Art District, Denver, CO 80205",1.6,255,"Blocks of large-scale murals, galleries, and breweries — best explored on foot.","Arts district","https://rinoartdistrict.org",null],
+["capitol","Colorado State Capitol","200 E Colfax Ave, Denver, CO 80203",2.65,221,"Free tours climb to the dome for sweeping mountain views.","Landmark",null,"ChIJGclBlCp5bIcRjwqRDQIXohI"],
+["artmuseum","Denver Art Museum","100 W 14th Ave Pkwy, Denver, CO 80204",2.93,223,"A striking building holding one of the country's best Indigenous art collections.","Museum","https://www.denverartmuseum.org","ChIJFaqhMyt_bIcRMfeTGF4E8kM"],
+["meowwolf","Meow Wolf Denver","1338 1st St, Denver, CO 80204",3.88,241,"Four-story immersive art funhouse — allow 2–3 hours.","Immersive art","https://meowwolf.com/visit/denver","ChIJrY3Kkih5bIcRrc8NGVd5KQk"],
+["redrocks","Red Rocks Amphitheatre","18300 W Alameda Pkwy, Morrison, CO 80465",15.22,242,"World-famous red-sandstone concert venue with a free visitor center and trails by day.","Concert venue","https://www.redrocksonline.com","ChIJ18hsDtqCa4cRrdYsOQfng3w"],
+["f1arcade","F1 Arcade Denver","2734 Walnut St, Denver, CO 80205",1.79,253,"Full-motion F1 racing simulators with a full bar and food menu in RiNo.","Racing simulators",null,"ChIJQ1QmLwB5bIcRYVb6stUGEMs"],
+["puttshack","Puttshack Denver","2813 Blake St, Denver, CO 80205",1.78,256,"Tech-enabled mini golf with a full bar — a fun, lively night out.","Mini golf",null,"ChIJi7tftzJ5bIcRGP1P13eXlSE"],
+["stickfeather","Stick & Feather","3851 Steele St, Denver, CO 80205",0.29,293,"Indoor golf simulator bar with high-end bays, just up the street.","Golf simulator",null,"ChIJW4sjJ2Z5bIcR61zWoG6se2Q"],
+["embracenorth","Embrace North","3863 Steele St, Denver, CO 80205",0.34,301,"Cold plunge and sauna club a five-minute walk from the house.","Cold plunge &amp; sauna",null,"ChIJBf-VLl15bIcR4EhLJXkOCzs"],
+["comedyworks","Comedy Works","1226 15th St, Denver, CO 80202",2.84,240,"Denver's top stand-up club, running national headliners nightly.","Comedy club","https://www.comedyworks.com","ChIJJxkZR8V4bIcRHY8TkXuscXw"],
+["missionballroom","Mission Ballroom","4242 Wynkoop St, Denver, CO 80216",1.06,301,"Denver's premier mid-size concert hall — great sound, easy to reach.","Concert venue","https://www.missionballroom.com","ChIJNzlf3X95bIcRFeU_G_4p1rc"],
+["bluebird","Bluebird Theater","3317 E Colfax Ave, Denver, CO 80206",1.94,174,"Historic, intimate concert venue on Colfax with excellent sound.","Concert venue",null,"ChIJP8d_pa1-bIcRG-K18x5tMgA"],
+["rapids","Colorado Rapids","6000 Victory Way, Commerce City, CO 80022",4.11,51,"MLS soccer at Dick's Sporting Goods Park, a short drive northeast.","MLS soccer","https://www.coloradorapids.com","ChIJo51u-_V6bIcRnSseHTJnrbM"],
+["rockies","Colorado Rockies","2001 Blake St, Denver, CO 80205",2.39,249,"MLB baseball at Coors Field — one of the most scenic ballparks in the league.","MLB baseball","https://www.mlb.com/rockies","ChIJVV75VNx4bIcR3tkU4SjDHBc"],
+["veo","Veo bike rentals","",null,null,"Dockless e-bikes and scooters scattered around the neighborhood — grab one via the app.","Bike share","https://rideveo.com",null]
+];
+const KIDS = [
+["zoo","Denver Zoo","2300 Steele St, Denver, CO 80205",0.6,177,"Highly rated zoo right in City Park; stroller rentals and free parking make it easy.","Zoo","https://denverzoo.org","ChIJcY8lIE55bIcRKWyHPdIO_VM"],
+["dmns2","Denver Museum of Nature & Science","2001 Colorado Blvd, Denver, CO 80205",1.5,161,"The dinosaur halls and planetarium are a hit with most ages.","Museum","https://www.dmns.org","ChIJI3SnU1F5bIcREWJ08vMIP80"],
+["citypark2","City Park Lake &amp; Playgrounds","City Park, Denver, CO 80205",1.34,176,"Paddle boats, a big playground, and open lawn — walkable from the house.","In the park",null,null],
+["elitch","Elitch Gardens","2000 Elitch Cir, Denver, CO 80204",3.33,248,"Denver's classic amusement and water park, open seasonally.","Amusement park","https://www.elitchgardens.com","ChIJBf_eksB4bIcRpc3LOaKiFrM"],
+["childrensmuseum","Children's Museum of Denver","2121 Children's Museum Dr, Denver, CO 80211",3.71,249,"Water play and climbing structures built for ages 2–10.","Children's museum","https://www.mychildsmuseum.org","ChIJHzj7kbt4bIcR_Fi8q1-va8A"],
+["fourmile","Bright Nights at Four Mile Park","715 S Forest St, Denver, CO 80246",4.70,164,"Seasonal light show at a historic farm — check dates before you go.","Seasonal",null,"ChIJt7PtLGR9bIcROUduOmhQP9E"]
+];
+
+function mapsSite(pid){ return pid ? `https://www.google.com/maps/place/?q=place_id:${pid}` : null; }
+function dirUrl(addr){ return `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(HOME_ADDR)}&destination=${encodeURIComponent(addr)}`; }
+function compass(b){ const dirs=["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW"]; return dirs[Math.round(b/22.5)%16]; }
+
+function cardHTML(e){
+  const [id,name,addr,d,b,desc,tag,site,pid] = e;
+  const href = site || mapsSite(pid) || null;
+  const titleHTML = href ? `<a href="${href}" target="_blank" rel="noopener">${name}</a>` : name;
+  const hasMap = d!==null && addr;
+  const pinBtn = hasMap ? `<button class="pin" onclick="goMap('${id}')" aria-label="Show ${name} on map" title="Show on map">📍</button>` : "";
+  return `<div class="card"><div class="card-head"><h3>${titleHTML}</h3>${pinBtn}</div><p>${desc}</p><span class="tag">${hasMap? d+" mi · ":""}${tag}</span></div>`;
+}
+function render(id, arr){ document.getElementById(id).innerHTML = arr.map(cardHTML).join(""); }
+render("dine-casual", DINE_CASUAL);
+render("dine-fine", DINE_FINE);
+render("brew-list", BREW);
+render("see-list", SEE);
+render("kids-list", KIDS);
+
+// ---- Map ----
+const ALL = [...DINE_CASUAL.map(e=>[...e,"#9C4326"]), ...DINE_FINE.map(e=>[...e,"#9C4326"]),
+  ...BREW.map(e=>[...e,"#6B3F4B"]), ...SEE.map(e=>[...e,"#B9812A"]), ...KIDS.map(e=>[...e,"#1F3350"])]
+  .filter(e=>e[3]!==null);
+const seen = new Set();
+const pts = ALL.filter(e=> seen.has(e[0]) ? false : (seen.add(e[0]), true));
+
+const cx=160, cy=160, ns="http://www.w3.org/2000/svg";
+const svg = document.getElementById('map-svg');
+[35,65,95,125,150].forEach(r=>{
+  const c=document.createElementNS(ns,"circle");
+  c.setAttribute("cx",cx);c.setAttribute("cy",cy);c.setAttribute("r",r);
+  c.setAttribute("fill","none");c.setAttribute("stroke","currentColor");c.setAttribute("stroke-opacity","0.15");
+  svg.appendChild(c);
+});
+const routeLine = document.createElementNS(ns,"line");
+routeLine.setAttribute("stroke","currentColor");routeLine.setAttribute("stroke-width","1.5");
+routeLine.setAttribute("stroke-dasharray","3 3");routeLine.setAttribute("opacity","0");
+svg.appendChild(routeLine);
+const home=document.createElementNS(ns,"circle");
+home.setAttribute("cx",cx);home.setAttribute("cy",cy);home.setAttribute("r",5);home.setAttribute("fill","currentColor");
+svg.appendChild(home);
+const homeLbl=document.createElementNS(ns,"text");
+homeLbl.setAttribute("x",cx);homeLbl.setAttribute("y",cy-10);homeLbl.setAttribute("text-anchor","middle");
+homeLbl.setAttribute("font-size","10");homeLbl.setAttribute("font-weight","600");homeLbl.textContent="Your House";
+svg.appendChild(homeLbl);
+
+const legend = document.getElementById('legend');
+const coords = {};
+pts.sort((a,b)=>a[3]-b[3]).forEach(p=>{
+  const [id,name,addr,d,b,desc,tag,site,pid,color] = p;
+  const r = Math.min(148, 16 + Math.sqrt(d)*42);
+  const rad = (b-90)*Math.PI/180;
+  const x = cx + r*Math.cos(rad), y = cy + r*Math.sin(rad);
+  coords[id] = {x,y,name,addr,d,b};
+  const dot = document.createElementNS(ns,"circle");
+  dot.setAttribute("cx",x);dot.setAttribute("cy",y);dot.setAttribute("r",4);
+  dot.setAttribute("fill",color);dot.setAttribute("id","dot-"+id);
+  dot.style.cursor="pointer";
+  dot.addEventListener("click",()=>goMap(id));
+  svg.appendChild(dot);
+  const li=document.createElement('li');
+  li.style.padding="4px 0";
+  li.innerHTML = `<span style="color:${color}">●</span> ${name} <span style="opacity:.6">${d} mi</span>`;
+  legend.appendChild(li);
+});
+
+let activeDot=null;
+function goMap(id){
+  document.getElementById('map').scrollIntoView({behavior:"smooth",block:"start"});
+  const p = coords[id];
+  if(!p) return;
+  if(activeDot) activeDot.setAttribute("r",4);
+  const dot = document.getElementById("dot-"+id);
+  if(dot){ dot.setAttribute("r",7); activeDot=dot; }
+  routeLine.setAttribute("x1",cx);routeLine.setAttribute("y1",cy);
+  routeLine.setAttribute("x2",p.x);routeLine.setAttribute("y2",p.y);
+  routeLine.setAttribute("opacity","0.6");
+  document.getElementById('selected').innerHTML =
+    `<strong>${p.name}</strong> — ${p.d} mi ${compass(p.b)} of the house · <a href="${dirUrl(p.addr)}" target="_blank" rel="noopener">Get directions →</a>`;
+}
+</script>
+</body>
+</html>
